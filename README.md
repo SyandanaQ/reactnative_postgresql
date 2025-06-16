@@ -10,10 +10,10 @@ A cross-platform note-taking application built using **React Native (Expo Router
 notes_app/
 ├── backend/              # Express.js backend
 │   ├── .env              # Environment variables (ignored in git)
-│   ├── server.js         # Main entry point
+│   ├── index.js          # Main entry point
 │   ├── routes/           # API routes
 │   ├── controllers/      # Controller logic
-│   └── db/               # Database config and connection
+│   └── db.js             # Database config and connection
 └── react_native/         # React Native frontend (Expo)
     ├── .env              # Environment variables (ignored in git)
     ├── app/              # Screens and navigation
