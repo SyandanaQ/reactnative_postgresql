@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "reac
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL;
+
 export default function EditNote() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
@@ -11,7 +13,7 @@ export default function EditNote() {
 
   useEffect(() => {
     axios
-      .get(`http://192.168.0.190:3001/notes/${id}`)
+      .get(`${BASE_URL}/notes/${id}`)
       .then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
@@ -29,7 +31,7 @@ export default function EditNote() {
     }
 
     try {
-      await axios.put(`http://192.168.0.190:3001/notes/${id}`, { title, content });
+      await axios.put(`${BASE_URL}/notes/${id}`, { title, content });
       Alert.alert("Berhasil", "Catatan berhasil diperbarui.", [
         {
           text: "OK",

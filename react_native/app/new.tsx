@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "reac
 import axios from "axios";
 import { useRouter } from "expo-router";
 
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL;
+
 export default function NewNoteScreen() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -15,7 +17,7 @@ export default function NewNoteScreen() {
     }
 
     try {
-      await axios.post("http://192.168.0.190:3001/notes", {
+      await axios.post(`${BASE_URL}/notes`, {
         title,
         content,
       });

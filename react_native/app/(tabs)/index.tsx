@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import axios from "axios";
 
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL;
+
 type Note = {
   id: number;
   title: string;
@@ -23,7 +25,7 @@ export default function HomeScreen() {
 
   const fetchNotes = async () => {
     try {
-      const res = await axios.get("http://192.168.0.190:3001/notes");
+      const res = await axios.get(`${BASE_URL}/notes`);
       setNotes(res.data);
     } catch (err) {
       console.log("Gagal mengambil data:", err);
@@ -51,7 +53,7 @@ export default function HomeScreen() {
           style: "destructive",
           onPress: async () => {
             try {
-              await axios.delete(`http://192.168.0.190:3001/notes/${id}`);
+              await axios.delete(`${BASE_URL}/notes/${id}`);
               fetchNotes();
             } catch (err) {
               console.log("Gagal menghapus:", err);
