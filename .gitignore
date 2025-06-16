@@ -1,2 +1,6 @@
+# Abaikan file .env di kedua folder
 backend/.env
-/react_native/.env
+react_native/.env
+
+# Abaikan node_modules di semua folder
+**/node_modules/
